@@ -228,3 +228,72 @@
         While defining the getter and setter using Object initializer prefix a 
         getter by get and setter by set */
 
+var o = {
+    a:7,
+    get b(){
+        return this.a +1;
+    },
+    set c(){
+        return this.a;
+    }
+}
+
+    /* Getters and setters can also be added to an object at any time after creation using the Object.defineProperties 
+        method as shown below: */
+            var o = { a:7 };
+            
+            Object.defineProperties(o,{
+                'b': {get:function(){
+                    return this.a + 1;
+                }},
+                'c':{set:function(x){
+                    this.a = x/2
+                }}
+            })
+
+            o.c = 10;
+            console.log(o.b) // 6;
+            
+            //The above form shows the dynamic nature of Javascript.
+    
+/*Deleting Properties: We can remove the non-inherited property by using the delete property. */
+            var myObj = {
+                a:10,
+                b:12
+            }
+            console.log('a' in myObj); //true
+            delete myObj.a;
+            console.log('a' in myObj); //false
+            console.log(obj.a); //undefined
+
+    /* We can also use delete to delete a global variable if the var/let/const keyword was not used to declare
+           the variable.For example: */
+           const b2=11;
+           console.log(b2); // 11
+           delete b2;
+           console.log(b2); // 11
+           
+           b3 = 12;
+           console.log(b3); // 12
+           delete b3;
+           console.log(b3); // "ReferenceError: b3 is not defined
+
+/*Comparing the Objects:
+    Two objects are same only when they same reference and never else. For example: */
+            
+            var fruit = {name: 'apple'};
+            var fruitbear = {name: 'apple'};
+
+            fruit == fruitbear; // return false
+            fruit === fruitbear; // return false
+
+
+            var fruit = {name: 'apple'};
+            var fruitbear = fruit;  // Assign fruit object reference to fruitbear
+
+            fruit == fruitbear; // return true
+            fruit === fruitbear; // return true
+
+            fruit.name = 'grape';
+            console.log(fruitbear); // { name: "grape" }
+           
